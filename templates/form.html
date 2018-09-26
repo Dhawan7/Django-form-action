@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load bootstrap4 %}
+{% load staticfiles %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>MyForm</title>
+    <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap.css "%}">
+  </head>
+  <body>
+    <div class="container bg-secondary">
+      <div class="row">
+        <div class="col-md-6 mx-auto bg-light">
+          {% if n %}
+            <div class="container p-5">
+              <h1 class='alert alert-success '>Welcome {{ n }} </h1>
+              <h2 class 'alert alert-info'> Here is your Details:</h2>
+              <h3 class='alert-warning'>Email: {{e}} <br/> Contact: {{c}}</h3>
+            </div>
+          {% else %}
+            <h1>Django Form</h1>
+            <form method="post">
+              {% csrf_token %}
+              {% bootstrap_form uform %}
+              <input type="submit" value="Submit" class='btn btn-success'>
+            </form>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

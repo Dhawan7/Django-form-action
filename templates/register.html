@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap.min.css"%}">
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <script>
+    $(document).ready(function(){
+      $('#myform').submit(function(e){
+        e.preventDefault();
+        var name = $('input[name=name]').val();
+        var password = $('input[name=pwd]').val();
+        var date = $('input[name=date]').val();
+        var csrf = $('input[name=csrfmiddlewaretoken]').val();
+        $.ajax({
+          url: '{% url "ajax" %}',
+          type: "POST",
+          data:{name:name,pwd:password,date:date,csrfmiddlewaretoken:csrf},
+          success: function(data){
+            if(data=='success'){
+              $('.msg').html('<div class="alert alert-success">Successfully Added</div>');
+            }else{
+              $('.msg').html('<div class="alert alert-danger">OOPS</div>');
+            }
+          }
+        });
+      });
+    });
+  </script>
+  </head>
+  <body>
+    <div class="jumbotron">
+      <div class="msg">
+
+      </div>
+      <form method="post" action="" id='myform'>
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Enter Name" class='form-control'/>
+        <input type="password" name="pwd" placeholder="Enter Password" class='form-control'>
+        <input type="date" name='date' class='form-control'>
+        <input type="submit" value="Register">
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<title>Index</title>
+<link rel="stylesheet" href="{% static "bootstrap/css/bootstrap.min.css "%}">
+</head>
+<style>
+.head{
+background:url("{% static "images/OT.png"%}");
+height:200px;
+background-repeat: no-repeat;
+background-size: 100% 100%;
+}
+</style>
+<body class='bg-dark'>
+<div class="container bg-white">
+<div class="row pb-5">
+<div class="col-md-12">
+<h1 align='center' class='head'>Index Page</h1>
+<p class='alert alert-primary text-center'>Hello it is my first page using template tagging</p>
+</div>
+<div class="col-md-6">
+<img src="{% static "images/web.jpg"%}" height='100%' width='100%' alt='No Image'>
+</div>
+<div class="col-md-6">
+<ol class='list-group'>
+<li class='list-group-item'>Create folder inside templates inside base directory</li>
+<li class='list-group-item'>Add path to setting.py file</li>
+<li class='list-group-item'>Connect html file to the Django views using render()</li>
+<li class='list-group-item'>Mapp url for that view</li>
+<li class='list-group-item'>Runserver using <mark>python manage.py</mark> </li>
+<li class='list-group-item'>Copy url <em>127.0.0.1:8000</em> in your browser </li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
